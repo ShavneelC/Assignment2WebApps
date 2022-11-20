@@ -30,7 +30,7 @@ class StudentSerializer(serializers.ModelSerializer):
 class ClassesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Classes
-        fields = ["Class_number", "course", "semester", "lecturer", "student"]
+        fields = ["class_number", "course", "semester", "lecturer", "student"]
 
 
 class CollegeDaySerializer(serializers.ModelSerializer):
