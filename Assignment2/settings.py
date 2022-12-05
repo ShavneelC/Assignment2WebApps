@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'attendance.User'
+# AUTH_USER_MODEL = 'attendance.User'
 
 
 # Application definition
@@ -44,8 +44,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'attendance',
     'reversion',
+    'rest_framework.authtoken',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+
+    ]
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

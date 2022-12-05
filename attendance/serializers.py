@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from attendance.models import Course, Semester, Lecturer, Student, Classes, CollegeDay
@@ -37,3 +38,17 @@ class CollegeDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = CollegeDay
         fields = ["date", "classes", "student"]
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "password"]
+
+        extra_kwarg = {'password': {
+            'write_only': True,
+            'required': True
+        }}
+    def create(selfself, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
